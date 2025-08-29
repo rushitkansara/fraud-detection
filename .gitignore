@@ -1,0 +1,16 @@
+# macOS system file
+.DS_Store
+
+# jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# dataset
+transactions.csv
+.csv
+
+# environment variables
+detect-fraud-env/
+.env
+
+# pretrained model
+# fraud_detection_xgb_pipeline.joblib
