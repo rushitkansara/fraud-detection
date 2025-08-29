@@ -98,4 +98,3 @@ If you want to use it then contact me and I will figure out a way to share it.
 	•	Experiment with other ML algorithms (XGBoost, LightGBM, Neural Networks).
 	•	Feature engineering for better fraud detection.
 	•	Deploy as an API (Flask/FastAPI) for real-time fraud detection.
-# fraud-detection
