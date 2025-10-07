@@ -71,8 +71,3 @@ One of the main challenges was dealing with the highly imbalanced dataset, where
 *   **Modular Codebase**: Refactor the code from the Jupyter Notebook into a more modular and maintainable Python package.
 *   **Advanced Feature Engineering**: Explore more complex features to further improve the model's performance.
 *   **Unit Tests**: Add a comprehensive suite of unit tests to ensure the reliability of the code.
-
-## The Team
-
-*   **[Your Name]** - *Role* - [GitHub Profile Link]
-*   **[Teammate's Name]** - *Role* - [GitHub Profile Link]
