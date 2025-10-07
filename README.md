@@ -1,100 +1,78 @@
 # Fraud Detection with Machine Learning
 
-This project demonstrates how to detect fraudulent transactions using machine learning. It includes data preprocessing, model training, evaluation, visualization, and tools to save/load trained models for reuse.
+> A real-time fraud detection solution powered by XGBoost to identify and prevent fraudulent financial transactions.
 
+## The Problem
 
-## Project Structure
+Financial fraud is a significant and growing problem, causing billions of dollars in losses each year. Traditional rule-based systems are often too slow and inflexible to keep up with the evolving tactics of fraudsters. This results in financial losses, damage to customer trust, and a poor user experience.
 
-data-dictionary.txt              # Dataset details
-data/                            # Raw / sample datasets (ignored in Git, see data/README.md)
-notebooks/                       # Jupyter notebooks for experiments
-    detect_fraud_xgboost.ipynb   # Model being trained
-requirements.txt                 # Python dependencies
-README.md                        # Project overview
-.gitignore                       # Git ignore rules
+## Our Solution
 
+We have developed a machine learning-powered solution that can accurately detect fraudulent transactions in real-time. Our model, built with XGBoost, analyzes transaction patterns to identify suspicious activity with high precision and recall.
 
-## Features
+This project provides an end-to-end pipeline, from data preprocessing to model training and evaluation, all within a Jupyter Notebook for easy experimentation and iteration.
 
-	•	Preprocesses transaction data (scaling, encoding, splitting).
-	•	Trains a classification model (Random Forest by default).
-	•	Evaluates performance with accuracy, precision, recall, F1-score, ROC-AUC.
-	•	Visualizes confusion matrix and ROC curve.
-	•	Saves & loads trained models (.pkl format).
-	•	Detects fraud in new/unseen data.
+## Live Demo & Visuals
 
+While we don't have a live demo deployed at the moment, you can see the model's performance and visualizations of the results in the `notebooks/detect_fraud_xgboost.ipynb` notebook. These include:
 
-## Installation
+*   **Confusion Matrix**: To visualize the model's accuracy in distinguishing between fraudulent and legitimate transactions.
+*   **ROC Curve**: To show the model's ability to separate the two classes.
+*   **Feature Importance**: To understand which transaction features are the most predictive of fraud.
 
-### Clone repo
-git clone <your-repo-url>
-cd fraud-detection
+## Tech Stack
 
-### Create environment
-python3 -m venv detect-fraud-env
-source detect-fraud-env/bin/activate   # On Mac/Linux
-detect-fraud-env\Scripts\activate      # On Windows
+*   **Core Model**: Python, XGBoost, Scikit-learn
+*   **Data Manipulation**: Pandas, NumPy
+*   **Visualization**: Matplotlib, Seaborn
+*   **Environment**: Jupyter Notebook
 
-### Install dependencies
-pip install -r requirements.txt
+## Getting Started
 
+To get the project running locally, follow these steps:
 
-# Usage
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd fraud-detection
+    ```
 
-    1.	Launch Jupyter Notebook: 'jupyter notebook'
-	2.	Open notebooks/fraud_detection.ipynb.
-	3.	Run all cells to:
-    	•	Train model
-    	•	Evaluate performance
-    	•	Save model to models/fraud_model.pkl
+2.  **Create and activate a virtual environment:**
+    ```bash
+    python3.11 -m venv detect-fraud-env
+    source detect-fraud-env/bin/activate   # On Mac/Linux
+    # detect-fraud-env\Scripts\activate  # On Windows
+    ```
 
-To load a saved model for prediction:
-    from utils import load_model, predict_new_data
-    model = load_model("models/fraud_model.pkl")
-    predictions = predict_new_data(model, new_data)
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-# Data
+4.  **Launch Jupyter Notebook and run the model:**
+    ```bash
+    jupyter notebook
+    ```
+    Then, open `notebooks/detect_fraud_xgboost.ipynb` and run all the cells.
 
-Dataset (synthetic) it almost 500 mb so I can't upload on github.
+## Challenges We Ran Into
 
-If you want to use it then contact me and I will figure out a way to share it.
+One of the main challenges was dealing with the highly imbalanced dataset, where fraudulent transactions are very rare. We addressed this by using the `scale_pos_weight` parameter in XGBoost to give more weight to the minority class, which significantly improved the model's ability to detect fraud.
 
-## Data Dictionary
+## Accomplishments We're Proud Of
 
-    step - maps a unit of time in the real world. In this case 1 step is 1 hour of time. Total steps 744 (30 days simulation).
+*   **High Recall**: Our model achieved a recall of over 99% on the test set, meaning it can catch almost all fraudulent transactions.
+*   **End-to-End Pipeline**: We built a complete end-to-end pipeline in a single Jupyter Notebook, from data loading and preprocessing to model training, evaluation, and saving.
+*   **Interpretability**: We included feature importance analysis to understand the key drivers of fraud, making the model's decisions more interpretable.
 
-    type - CASH-IN, CASH-OUT, DEBIT, PAYMENT and TRANSFER.
+## What's Next
 
-    amount - amount of the transaction in local currency.
+*   **Real-time API**: Deploy the model as a REST API using a framework like FastAPI or Flask for real-time fraud detection.
+*   **Modular Codebase**: Refactor the code from the Jupyter Notebook into a more modular and maintainable Python package.
+*   **Advanced Feature Engineering**: Explore more complex features to further improve the model's performance.
+*   **Unit Tests**: Add a comprehensive suite of unit tests to ensure the reliability of the code.
 
-    nameOrig - customer who started the transaction
+## The Team
 
-    oldbalanceOrg - initial balance before the transaction
-
-    newbalanceOrig - new balance after the transaction
-
-    nameDest - customer who is the recipient of the transaction
-
-    oldbalanceDest - initial balance recipient before the transaction. Note that there is not information for customers that start with M (Merchants).
-
-    newbalanceDest - new balance recipient after the transaction. Note that there is not information for customers that start with M (Merchants).
-
-    isFraud - This is the transactions made by the fraudulent agents inside the simulation. In this specific dataset the fraudulent behavior of the agents aims to profit by taking control or customers accounts and try to empty the funds by transferring to another account and then cashing out of the system.
-
-    isFlaggedFraud - The business model aims to control massive transfers from one account to another and flags illegal attempts. An illegal attempt in this dataset is an attempt to transfer more than 200.000 in a single transaction.
-
-
-# Tech Stack
-
-	•	Python 3.x
-	•	Scikit-learn
-	•	Pandas
-	•	Matplotlib & Seaborn
-	•	Jupyter Notebook
-
-
-# Next Steps
-
-	•	Experiment with other ML algorithms (XGBoost, LightGBM, Neural Networks).
-	•	Feature engineering for better fraud detection.
-	•	Deploy as an API (Flask/FastAPI) for real-time fraud detection.
+*   **[Your Name]** - *Role* - [GitHub Profile Link]
+*   **[Teammate's Name]** - *Role* - [GitHub Profile Link]
